@@ -23,7 +23,7 @@ jobs:
         run: |
           cd NativeComponents/
           make
-      - name: Try Running Dumpbin
+      - name: Dump Result Dependencies
         shell: cmd
         run: |
           call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" amd64
