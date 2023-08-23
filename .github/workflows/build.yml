@@ -13,7 +13,7 @@ jobs:
         with:
           msystem: clang64
           update: true
-          install: make mingw-w64-ucrt-x86_64-gcc
+          install: make clang
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -22,7 +22,7 @@ jobs:
         shell: msys2 '{0}'
         run: |
           cd NativeComponents/
-          make
+          make CXX=clang
       - name: Dump Result Dependencies
         shell: cmd
         run: |
