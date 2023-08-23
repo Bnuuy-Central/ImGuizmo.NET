@@ -8,24 +8,26 @@ jobs:
     name: Compile for Windows
     runs-on: windows-latest
     steps:
+      - name: Setup MSYS2 UCRT64
+        uses: msys2/setup-msys2@v2
+        with:
+          msystem: UCRT64
+          update: true
+          install: mingw-w64-ucrt-x86_64-gcc
       - name: Checkout
         uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Sanity Check VS
-        shell: C:\msys64\usr\bin\bash.exe -e '{0}'
+      - name: Compile Native Components
+        shell: msys2 '{0}'
         run: |
-          ls "/c/Program Files/Microsoft Visual Studio/2022/Enterprise/Common7/Tools/"
+          cd NativeComponents/
+          make
       - name: Try Running Dumpbin
         shell: cmd
         run: |
           call "C:\Program Files\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvarsall.bat" amd64
-          dumpbin /DEPENDENTS C:\msys64\usr\bin\bash.exe
-      - name: Compile Native Components
-        shell: C:\msys64\usr\bin\bash.exe -e '{0}'
-        run: |
-          cd NativeComponents/
-          make
+          dumpbin /DEPENDENTS NativeComponents\ImGuizmo-Bridge.dll
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
