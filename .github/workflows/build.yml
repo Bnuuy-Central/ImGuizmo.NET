@@ -22,7 +22,7 @@ jobs:
         shell: msys2 '{0}'
         run: |
           cd NativeComponents/
-          make CXX=clang CXXFLAGS='-std=c++11 -IImGui/'
+          make CXX=clang++ CXXFLAGS='-std=c++11 -IImGui/'
       - name: Dump Result Dependencies
         shell: cmd
         run: |
