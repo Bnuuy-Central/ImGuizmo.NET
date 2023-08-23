@@ -15,9 +15,12 @@ jobs:
       - name: Check Windows MSYS setup
         shell: C:\msys64\usr\bin\bash.exe '{0}'
         run: |
-          ls /ucrt64 /clang64
-          command dumpbin || echo "no dumpbin in path"
-          ls '/c/Program Files/Microsoft Visual Studio/2022/Enterprise'
+          ls /
+      - name: Try Running Dumpbin
+        shell: C:\Windows\system32\cmd.exe '{0}'
+        run: |
+          call C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\vcvars64.bat
+          dumpbin /DEPENDENTS C:\msys64\usr\bin\bash.exe
       - name: Compile Native Components
         shell: C:\msys64\usr\bin\bash.exe -e '{0}'
         run: |
