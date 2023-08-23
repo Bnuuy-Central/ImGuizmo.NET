@@ -17,7 +17,6 @@ jobs:
         run: |
           ls /
       - name: Try Running Dumpbin
-        shell: C:\Windows\system32\cmd.exe '{0}'
         run: |
           call C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\vcvars64.bat
           dumpbin /DEPENDENTS C:\msys64\usr\bin\bash.exe
