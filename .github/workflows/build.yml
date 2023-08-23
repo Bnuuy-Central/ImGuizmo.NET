@@ -8,7 +8,7 @@ jobs:
     name: Compile for Windows
     runs-on: windows-latest
     steps:
-      - name: Setup MSYS2 UCRT64
+      - name: Setup MSYS2 clang64
         uses: msys2/setup-msys2@v2
         with:
           msystem: clang64
