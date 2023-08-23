@@ -13,7 +13,7 @@ jobs:
         with:
           submodules: true
       - name: Try Running Dumpbin
-        shell: C:\Windows\System32\cmd.exe /c call {0}
+        shell: C:\Windows\System32\cmd.exe /c type {0}
         run: |
           call C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\vcvarsall.bat amd64
           dumpbin /DEPENDENTS C:\msys64\usr\bin\bash.exe
