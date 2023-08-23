@@ -12,10 +12,6 @@ jobs:
         uses: actions/checkout@v3
         with:
           submodules: true
-      - name: Check Windows MSYS setup
-        shell: C:\msys64\usr\bin\bash.exe '{0}'
-        run: |
-          ls /
       - name: Try Running Dumpbin
         run: |
           call C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\vcvars64.bat
