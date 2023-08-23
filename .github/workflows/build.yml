@@ -15,7 +15,7 @@ jobs:
       - name: Try Running Dumpbin
         shell: C:\Windows\System32\cmd.exe /c {0}
         run: |
-          call C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\vcvars64.bat
+          call C:\Program Files\Microsoft Visual Studio\2022\Enterprise\Common7\Tools\vcvarsall.bat amd64
           dumpbin /DEPENDENTS C:\msys64\usr\bin\bash.exe
       - name: Compile Native Components
         shell: C:\msys64\usr\bin\bash.exe -e '{0}'
