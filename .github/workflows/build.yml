@@ -8,21 +8,15 @@ jobs:
     name: Compile for Windows
     runs-on: windows-latest
     steps:
-      - name: Setup MSYS2 clang64
-        uses: msys2/setup-msys2@v2
-        with:
-          msystem: clang64
-          update: true
-          install: make clang
       - name: Checkout
         uses: actions/checkout@v3
         with:
           submodules: true
       - name: Compile Native Components
-        shell: msys2 '{0}'
+        shell: C:\msys64\usr\bin\bash.exe -e '{0}'
         run: |
           cd NativeComponents/
-          make CXX=clang++ CXXFLAGS='-std=c++11 -IImGui/'
+          make
       - name: Dump Result Dependencies
         shell: cmd
         run: |
