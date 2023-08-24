@@ -16,7 +16,7 @@ jobs:
         shell: C:\msys64\usr\bin\bash.exe -e '{0}'
         run: |
           cd NativeComponents/
-          make CXXFLAGS='-std=c++11 -IImGui/ -fPIC -Wl,--push-state -Wl,-static, -Wl,-lwinpthread -Wl,--pop-state'
+          make CXXLDFLAGS='-static-libgcc -static-libstdc++ -shared -Wl,--push-state -Wl,-static, -Wl,-lwinpthread -Wl,--pop-state'
       - name: Dump Result Dependencies
         shell: cmd
         run: |
